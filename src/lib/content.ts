@@ -87,7 +87,6 @@ export function normalizeContent(raw: unknown): SiteContent {
       badge: asText(hero.badge, fallback.hero.badge),
       title: asText(hero.title, fallback.hero.title),
       titleAccent: asText(hero.titleAccent, fallback.hero.titleAccent),
-      subtitle: asText(hero.subtitle, fallback.hero.subtitle),
       philosophy: {
         ideaLabel: asText(philosophy.ideaLabel, fallback.hero.philosophy.ideaLabel),
         idea: asText(philosophy.idea, fallback.hero.philosophy.idea),
@@ -158,9 +157,6 @@ export function parseImportedContent(rawText: string): SiteContent {
 
 export const getMajorCount = (members: Member[]) =>
   new Set(members.map((member) => member.major.trim()).filter(Boolean)).size
-
-export const getLeadershipCount = (members: Member[]) =>
-  members.filter((member) => member.tier !== 'member').length
 
 export const TIER_LABELS: Record<MemberTier, string> = {
   president: 'Team President',

@@ -26,7 +26,7 @@ export function HomeEditor({ draft, setDraft }: HomeEditorProps) {
     <div className="space-y-5">
       <AdminSection
         title="Hero Section"
-        description="The headline, intro text, and call-to-action buttons on the first screen."
+        description="The headline and call-to-action buttons on the first screen."
       >
         <div className="grid gap-4 sm:grid-cols-2">
           <AdminField
@@ -45,14 +45,6 @@ export function HomeEditor({ draft, setDraft }: HomeEditorProps) {
             value={draft.hero.titleAccent}
             onChange={(titleAccent) => setHero({ titleAccent })}
             dir="ltr"
-          />
-          <AdminField
-            label="Subtitle"
-            value={draft.hero.subtitle}
-            onChange={(subtitle) => setHero({ subtitle })}
-            textarea
-            rows={3}
-            className="sm:col-span-2"
           />
           <AdminField
             label="Primary button text"

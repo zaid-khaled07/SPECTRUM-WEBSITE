@@ -10,7 +10,7 @@ import { useContent } from '../context/ContentContext'
 import { SpectrumMark } from '../components/SpectrumLogo'
 import { SpectrumArcs } from '../components/SpectrumArcs'
 import { CountUp, Reveal } from '../components/Reveal'
-import { getLeadershipCount, getMajorCount, TIER_LABELS } from '../lib/content'
+import { getMajorCount, TIER_LABELS } from '../lib/content'
 import { getInitials, padNumber } from '../lib/arabic'
 import { EASE } from '../lib/motion'
 import type { Member } from '../types'
@@ -44,7 +44,7 @@ export function Team({ navigate, onGoals }: TeamProps) {
   const president = members.find((member) => member.tier === 'president')
   const vice = members.filter((member) => member.tier === 'vice')
   const leads = members.filter((member) => member.tier === 'lead')
-  const regularMembers = members.filter((member) => member.tier === 'member')
+  const leadership = members.filter((member) => member.tier !== 'member')
   const memberNumber = (member: Member) => members.indexOf(member) + 1
 
   return (
@@ -105,9 +105,9 @@ export function Team({ navigate, onGoals }: TeamProps) {
 
                 <div className="mt-9 flex max-w-lg items-stretch divide-x divide-cream/10 border-t border-cream/10 pt-6">
                   {[
-                    { value: members.length, label: 'Team Members' },
-                    { value: getMajorCount(members), label: 'Majors' },
-                    { value: getLeadershipCount(members), label: 'Leadership Roles' },
+                    { value: leadership.length, label: 'Leadership Team' },
+                    { value: getMajorCount(leadership), label: 'Majors' },
+                    { value: leads.length, label: 'Team Leads' },
                   ].map((stat) => (
                     <div key={stat.label} className="flex flex-1 flex-col gap-1 px-4 first:pl-0">
                       <span className="font-display text-2xl font-semibold text-cream sm:text-[28px]">
@@ -177,7 +177,7 @@ export function Team({ navigate, onGoals }: TeamProps) {
                     title={vice.length === 1 ? 'Vice President' : 'Vice Presidents'}
                     count={vice.length}
                   />
-                  <div className="mx-auto flex max-w-3xl flex-wrap justify-center gap-4">
+                  <div className="mx-auto flex max-w-2xl flex-wrap justify-center gap-4">
                     {vice.map((member) => (
                       <ViceCard key={member.id} member={member} number={memberNumber(member)} />
                     ))}
@@ -191,18 +191,6 @@ export function Team({ navigate, onGoals }: TeamProps) {
                   <GroupLabel title="Team Leads" count={leads.length} />
                   <div className="flex flex-wrap justify-center gap-4">
                     {leads.map((member) => (
-                      <MemberCard key={member.id} member={member} number={memberNumber(member)} />
-                    ))}
-                  </div>
-                </>
-              )}
-
-              {regularMembers.length > 0 && (
-                <>
-                  <Connector />
-                  <GroupLabel title="Members" count={regularMembers.length} />
-                  <div className="flex flex-wrap justify-center gap-4">
-                    {regularMembers.map((member) => (
                       <MemberCard key={member.id} member={member} number={memberNumber(member)} />
                     ))}
                   </div>
@@ -297,7 +285,7 @@ function PresidentCard({ member, number }: { member: Member; number: number }) {
             <span className="h-1 w-1 rounded-full bg-caramel-light/60" />
             Leadership
           </span>
-          <h3 className="mt-3 font-display text-2xl font-semibold text-cream sm:text-[32px]">
+          <h3 className="mt-3 font-display text-2xl font-semibold uppercase text-cream sm:text-[32px]">
             {member.name}
           </h3>
           {member.latinName && member.latinName !== member.name && (
@@ -360,7 +348,7 @@ function ViceCard({ member, number }: { member: Member; number: number }) {
           <span className="inline-flex rounded-full border border-espresso/10 bg-white/50 px-3 py-1 text-[9px] font-semibold tracking-[0.16em] text-caramel-dark">
             {TIER_LABELS[member.tier]}
           </span>
-          <h3 className="mt-2 font-display text-xl font-semibold text-espresso sm:text-2xl">
+          <h3 className="mt-2 font-display text-xl font-semibold uppercase text-espresso sm:text-2xl">
             {member.name}
           </h3>
           {member.latinName && member.latinName !== member.name && (
@@ -416,7 +404,7 @@ function MemberCard({ member, number }: { member: Member; number: number }) {
           <span className={`h-1 w-1 rounded-full ${TEAM_DOTS[member.team] ?? 'bg-caramel'}`} />
           {member.team}
         </span>
-        <h3 className="mt-3 font-display text-xl font-semibold text-espresso">{member.name}</h3>
+        <h3 className="mt-3 font-display text-xl font-semibold uppercase text-espresso">{member.name}</h3>
         {member.latinName && member.latinName !== member.name && (
           <p
             className="mt-1 text-left font-latin text-[9px] uppercase tracking-[0.18em] text-ink/35"

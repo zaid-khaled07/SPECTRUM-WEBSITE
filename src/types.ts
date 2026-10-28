@@ -40,7 +40,6 @@ export interface SiteContent {
     badge: string
     title: string
     titleAccent: string
-    subtitle: string
     philosophy: {
       ideaLabel: string
       idea: string

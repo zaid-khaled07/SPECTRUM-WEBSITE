@@ -100,7 +100,7 @@ export function MembersEditor({ draft, setDraft }: MembersEditorProps) {
 
       <AdminSection
         title="Team Members"
-        description={`${draft.members.length} members currently. The tier controls placement: leadership, team leads, then members.`}
+        description={`${draft.members.length} members saved. The tier controls placement: president and vice president come first, then team leads. Regular members stay in the dashboard but are not shown on the public team page.`}
         action={<AdminAddButton onClick={addMember} label="Add Member" />}
       >
         {draft.members.length === 0 ? (

@@ -19,6 +19,7 @@ import {
 import { useContent } from '../context/ContentContext'
 import { SpectrumMark } from '../components/SpectrumLogo'
 import { SpectrumArcs } from '../components/SpectrumArcs'
+import { SpectrumWave } from '../components/SpectrumWave'
 import { GoalGlyph } from '../components/GoalGlyph'
 import { CountUp, Reveal } from '../components/Reveal'
 import { getMajorCount } from '../lib/content'
@@ -100,13 +101,6 @@ export function Home({ navigate, onGoals }: HomeProps) {
                 </span>
               </motion.h1>
 
-              <motion.p
-                variants={heroItem}
-                className="mt-6 max-w-xl text-base leading-8 text-ink/65 sm:text-lg sm:leading-9"
-              >
-                {hero.subtitle}
-              </motion.p>
-
               <motion.div variants={heroItem} className="mt-8 flex flex-wrap items-center gap-3">
                 <a
                   href={JOIN_FORM_URL}
@@ -182,7 +176,7 @@ export function Home({ navigate, onGoals }: HomeProps) {
         </div>
       </section>
 
-      <Marquee />
+      <SpectrumWave />
 
       <section id="goals" className="relative scroll-mt-32 overflow-hidden py-20 sm:py-24">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
@@ -487,7 +481,7 @@ function HeroVisual({
               {getInitials(presidentLatinName ?? presidentName ?? 'SPC')}
             </span>
             <span>
-              <span className="block text-[11px] font-semibold text-ink">{presidentName}</span>
+              <span className="block uppercase text-[11px] font-semibold text-ink">{presidentName}</span>
               <span className="mt-0.5 block text-[9px] text-ink/45">{presidentRole}</span>
             </span>
           </motion.div>
@@ -499,39 +493,5 @@ function HeroVisual({
         />
       </div>
     </motion.div>
-  )
-}
-
-function Marquee() {
-  const items = [
-    'Spectrum — From Binary to Beyond',
-    'Al-Balqa Applied University',
-    'Build · Learn · Grow',
-    'SPC · From Binary to Beyond',
-    'A multidisciplinary student community',
-  ]
-
-  return (
-    <section
-      aria-label="Spectrum in a nutshell"
-      className="marquee relative overflow-hidden border-y border-espresso/10 bg-linen/55 py-4"
-    >
-      <div dir="ltr" className="marquee-track">
-        {[0, 1].map((copy) => (
-          <div
-            key={copy}
-            aria-hidden={copy === 1}
-            className="flex shrink-0 items-center"
-          >
-            {items.map((item, index) => (
-              <div key={`${copy}-${index}`} className="flex shrink-0 items-center">
-                <span className="px-7 font-display text-[13px] text-ink/55 sm:px-9">{item}</span>
-                <span className="h-1.5 w-1.5 rotate-45 bg-caramel/50" />
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    </section>
   )
 }

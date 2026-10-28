@@ -156,31 +156,12 @@
     background-size: 56px 56px;
   }
 
-  .marquee-track {
-    display: flex;
-    width: max-content;
-    animation: marquee-ltr 38s linear infinite;
-  }
-
-  .marquee:hover .marquee-track {
-    animation-play-state: paused;
-  }
-
   .arch-frame {
     border-radius: 999px 999px 2rem 2rem;
   }
 
   .hairline {
     @apply border-espresso/10;
-  }
-}
-
-@keyframes marquee-ltr {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
   }
 }
 
