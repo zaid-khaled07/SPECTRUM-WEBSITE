@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
 
-export type Route = '/' | '/team' | '/admin'
+export type Route = '/' | '/team' | '/questions' | '/admin'
 
 const parseHash = (): Route => {
   const path = window.location.hash.replace(/^#/, '').split('?')[0]
-  if (path === '/team' || path === '/admin') return path
+  if (path === '/team' || path === '/questions' || path === '/admin') return path
   return '/'
 }
 

@@ -70,6 +70,7 @@ export function Footer({ navigate, onGoals }: FooterProps) {
                 { label: 'Home', action: () => navigate('/') },
                 { label: 'Our Goals', action: onGoals },
                 { label: 'Team Members', action: () => navigate('/team') },
+                { label: 'Question Banks', action: () => navigate('/questions') },
               ].map((link) => (
                 <li key={link.label}>
                   <button

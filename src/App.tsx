@@ -4,6 +4,7 @@ import { Header } from './components/Header'
 import { Footer } from './components/Footer'
 import { Home } from './pages/Home'
 import { Team } from './pages/Team'
+import { QuestionBanks } from './pages/QuestionBanks'
 import { Admin } from './pages/Admin'
 import { useHashRoute } from './hooks/useHashRoute'
 import { EASE } from './lib/motion'
@@ -15,6 +16,7 @@ export default function App() {
     const titles: Record<string, string> = {
       '/': 'Spectrum SPC | From Binary to Beyond',
       '/team': 'Team Members | Spectrum SPC',
+      '/questions': 'Question Banks | Spectrum SPC',
       '/admin': 'Admin Dashboard | Spectrum SPC',
     }
     document.title = titles[route]
@@ -85,6 +87,8 @@ export default function App() {
             <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
               {route === '/team' ? (
                 <Team navigate={navigate} onGoals={onGoals} />
+              ) : route === '/questions' ? (
+                <QuestionBanks navigate={navigate} />
               ) : (
                 <Home navigate={navigate} onGoals={onGoals} />
               )}

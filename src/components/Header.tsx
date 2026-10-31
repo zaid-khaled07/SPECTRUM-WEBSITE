@@ -77,6 +77,11 @@ export function Header({ route, navigate, onGoals }: HeaderProps) {
     { label: 'Home', active: route === '/', action: () => navigate('/') },
     { label: 'Our Goals', active: false, action: onGoals },
     { label: 'Team Members', active: route === '/team', action: () => navigate('/team') },
+    {
+      label: 'Question Banks',
+      active: route === '/questions',
+      action: () => navigate('/questions'),
+    },
   ]
 
   return (
@@ -91,8 +96,8 @@ export function Header({ route, navigate, onGoals }: HeaderProps) {
             <span className="font-latin tracking-[0.2em] text-cream/80" dir="ltr">
               SPECTRUM SPC
             </span>
-            <span className="text-cream/20">/</span>
-            <span className="font-latin uppercase tracking-[0.18em] text-cream/65" dir="ltr">
+            <span className="hidden text-cream/20 sm:inline">/</span>
+            <span className="hidden font-latin uppercase tracking-[0.18em] text-cream/65 sm:inline" dir="ltr">
               From Binary to Beyond
             </span>
           </div>
@@ -227,6 +232,7 @@ export function Header({ route, navigate, onGoals }: HeaderProps) {
                     { label: 'Home', action: () => navigate('/') },
                     { label: 'Our Goals', action: onGoals },
                     { label: 'Team Members', action: () => navigate('/team') },
+                    { label: 'Question Banks', action: () => navigate('/questions') },
                   ].map((link, index) => (
                     <motion.button
                       key={link.label}
