@@ -9,12 +9,11 @@ interface QuestionBanksProps {
   navigate: (route: Route) => void
 }
 
-// Placeholder titles/paths — pdf1–pdf4 currently hold the Calculus, Physics, C++, and Python banks.
 const PDF_BANKS = [
-  { id: 'bank-1', title: 'PDF File 1', file: 'pdf1.pdf' },
-  { id: 'bank-2', title: 'PDF File 2', file: 'pdf2.pdf' },
-  { id: 'bank-3', title: 'PDF File 3', file: 'pdf3.pdf' },
-  { id: 'bank-4', title: 'PDF File 4', file: 'pdf4.pdf' },
+  { id: 'bank-calculus', title: 'Calculus 1', file: 'calculus1.pdf' },
+  { id: 'bank-physics', title: 'Physics 1', file: 'physics1.pdf' },
+  { id: 'bank-cpp', title: 'C++', file: 'cpp.pdf' },
+  { id: 'bank-python', title: 'Python', file: 'python.pdf' },
 ]
 
 export function QuestionBanks({ navigate }: QuestionBanksProps) {
